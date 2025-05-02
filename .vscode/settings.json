@@ -1,0 +1,33 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "tsconfig.json": "tsconfig.*.json, env.d.ts",
+    "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
+    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#7739e9",
+    "activityBar.background": "#7739e9",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#56250a",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#7739e9",
+    "statusBar.background": "#5b18d7",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#7739e9",
+    "statusBarItem.remoteBackground": "#5b18d7",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#5b18d7",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#5b18d799",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#5b18d7",
+  "prettier.enable": false,
+  "eslint.useFlatConfig": true
+}

@@ -1,6 +1,35 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/test-utils',
+    '@nuxt/fonts',
+    '@nuxtjs/fontaine',
+  ],
+  ssr: false,
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/test-utils']
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+  },
+  css: ['@provetcloud/css', '~/assets/css/main.css'],
+  vue: {
+    compilerOptions: {
+      isCustomElement: tag => tag.startsWith('provet-'),
+    },
+  },
+  compatibilityDate: '2024-11-01',
+  hooks: {
+    'prerender:routes'({ routes }) {
+      routes.clear()
+    },
+  },
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+    checker: true,
+  },
+  fonts: {
+    provider: 'local',
+  },
 })

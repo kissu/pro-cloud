@@ -1,0 +1,4 @@
+body {
+  font-family: var(--n-font-family);
+  font-feature-settings: var(--n-font-features);
+}
