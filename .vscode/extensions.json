@@ -5,5 +5,8 @@
     "ms-playwright.playwright",
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig"
+  ],
+  "unwantedRecommendations": [
+    "octoref.vetur"
   ]
 }
