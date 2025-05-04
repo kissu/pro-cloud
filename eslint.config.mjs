@@ -2,5 +2,12 @@
 import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
-  // Your custom configs here
+  {
+    rules: {
+      'vue/multi-word-component-names': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      'vue/no-deprecated-slot-attribute': 'off',
+      'vue/v-slot-style': 'off',
+    },
+  },
 )

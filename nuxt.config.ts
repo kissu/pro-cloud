@@ -1,12 +1,17 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import checker from 'vite-plugin-checker'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/test-utils',
     '@nuxt/fonts',
     '@nuxtjs/fontaine',
+    '@vueuse/nuxt',
   ],
   ssr: false,
+  components: [
+    { path: '~/components/', prefix: 'P' },
+  ],
   devtools: { enabled: true },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -18,6 +23,13 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2024-11-01',
+  vite: {
+    plugins: [
+      checker({
+        typescript: true,
+      }),
+    ],
+  },
   hooks: {
     'prerender:routes'({ routes }) {
       routes.clear()
