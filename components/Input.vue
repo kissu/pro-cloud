@@ -33,6 +33,7 @@ function canDisplayErrors() {
     :autocomplete="kind === 'email' ? 'email' : undefined"
     :placeholder
     :form="form"
+    :data-testid="kind"
     @input="emit('input')"
     @blur="touched = true"
   >

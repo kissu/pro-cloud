@@ -16,6 +16,7 @@ function resetError() {
       ref="toast"
       :auto-dismiss="3000"
       variant="danger"
+      test-dataid="toast"
       @dismiss="resetError"
     >
       {{ errorStore.currentError }}

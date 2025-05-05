@@ -14,6 +14,7 @@ const { expand } = defineProps<Props>()
     variant="primary"
     type="submit"
     size="l"
+    data-testid="submit"
     :expand
   >
     <slot />

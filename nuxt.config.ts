@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@vueuse/nuxt',
     '@pinia/nuxt',
+    '@nuxt/test-utils/module',
   ],
   ssr: false,
   components: [
@@ -31,6 +32,7 @@ export default defineNuxtConfig({
       }),
     ],
   },
+  telemetry: false,
   hooks: {
     'prerender:routes'({ routes }) {
       routes.clear()

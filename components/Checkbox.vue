@@ -14,6 +14,7 @@ const wantsNewsletter = defineModel<boolean>()
   <provet-checkbox
     v-model="wantsNewsletter"
     :label="label"
+    data-testid="checkbox"
     type="checkbox"
   />
 </template>
