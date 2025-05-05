@@ -10,7 +10,10 @@
       "nodeVersion": "22.14.0"
     },
     "onlyBuiltDependencies": [
-      "msw"
+      "@parcel/watcher",
+      "esbuild",
+      "msw",
+      "unrs-resolver"
     ]
   },
   "scripts": {
@@ -28,6 +31,7 @@
     "@nuxt/fonts": "0.11.2",
     "@nuxt/test-utils": "3.17.2",
     "@nuxtjs/fontaine": "0.5.0",
+    "@pinia/nuxt": "^0.11.0",
     "@provetcloud/css": "^1.1.0",
     "@provetcloud/themes": "^1.0.0",
     "@provetcloud/web-components": "^1.3.3",
@@ -35,7 +39,8 @@
     "eslint": "^9.0.0",
     "nuxt": "^3.17.1",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "zod": "^3.24.4"
   },
   "packageManager": "pnpm@10.10.0",
   "devDependencies": {

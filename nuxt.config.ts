@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxtjs/fontaine',
     '@vueuse/nuxt',
+    '@pinia/nuxt',
   ],
   ssr: false,
   components: [
