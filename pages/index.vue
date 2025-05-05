@@ -1,18 +1,32 @@
 <script setup lang="ts">
+import type { Ref } from 'vue'
+
 usePasswordToggle('provet-input[type=\'password\']')
 
-const wantsNewsletter = ref(false)
 const emailValue = ref('')
-const passwordValue = ref('hehe')
+const passwordValue = ref('')
+const wantsNewsletter: Ref<boolean> = ref(false)
 
-const payload = ref({
-  wantsNewsletter,
-  emailValue,
-  passwordValue,
+const { errors, validate } = useValidate({ wantsNewsletter, emailValue, passwordValue })
+
+const { status, execute } = useFetchApi('/subscriptions', {
+  method: 'POST',
+  body: {
+    email: emailValue,
+    password: passwordValue,
+    wantsNewsletter,
+  },
 })
 
-function sendPayload() {
-  console.log('to send', payload.value)
+async function sendPayload() {
+  validate()
+  if (Object.entries(errors.value).length) {
+    const errorStore = useErrorStore()
+    errorStore.setError('Please fill the form properly')
+    return
+  }
+  await execute()
+  if (status.value === 'success') await navigateTo({ name: 'thanks' })
 }
 
 const subscriptionForm = useTemplateRef<HTMLFormElement>('subscription-form')
@@ -41,7 +55,7 @@ const subscriptionForm = useTemplateRef<HTMLFormElement>('subscription-form')
           id="subcription-form"
           ref="subscription-form"
           action="#"
-          @submit.prevent="sendPayload"
+          @submit.prevent
         >
           <provet-stack>
             <PInput
@@ -50,6 +64,9 @@ const subscriptionForm = useTemplateRef<HTMLFormElement>('subscription-form')
               value="Email"
               placeholder="john@doe.com"
               :form="subscriptionForm?.value"
+              :error="errors['email']"
+              @input="validate"
+              @blur="validate"
             />
             <PInput
               v-model="passwordValue"
@@ -57,6 +74,9 @@ const subscriptionForm = useTemplateRef<HTMLFormElement>('subscription-form')
               :form="subscriptionForm?.value"
               value="Password"
               placeholder="••••••••"
+              :error="errors['password']"
+              @blur="validate"
+              @input="validate"
             />
             <PCheckbox
               v-model="wantsNewsletter"
@@ -64,7 +84,8 @@ const subscriptionForm = useTemplateRef<HTMLFormElement>('subscription-form')
             />
             <PButton
               expand
-              @click="$router.push({ name: 'thanks' })"
+              :loading="status === 'pending'"
+              @click.capture.prevent="sendPayload"
             >
               Sign up
             </PButton>
