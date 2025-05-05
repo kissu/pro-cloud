@@ -11,6 +11,7 @@ import '@provetcloud/web-components/lib/Stack'
     >
       <slot />
     </provet-stack>
+    <PToast />
   </provet-layout>
 </template>
 
